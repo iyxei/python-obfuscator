@@ -1,7 +1,11 @@
 ### Python Obfuscator
-
+'''bash
+  obfuscator na naka obfuscate</3
+ - https://github.com/iyxe
+ - https://heavenn.ct.ws
+ - https://ransxm.org
+'''
 ### Modules Used
-Step-by-step instructions 
 ```bash
 zlib
 marshal
