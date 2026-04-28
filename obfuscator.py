@@ -18,7 +18,7 @@ def heaven():
     except Exception as e:
        
         import traceback
-        print("An error occurred while running the obfuscated code:")
+        print("An error occurred:")
         traceback.print_exc()
 
 if __name__ == "__main__":
